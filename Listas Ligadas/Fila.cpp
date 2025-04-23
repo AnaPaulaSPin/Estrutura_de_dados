@@ -35,14 +35,10 @@ struct fila{
             cout << "Fila vazia!" << endl;
 
         } else {
-            fila *tempInicio;
-
-            tempInicio = inicio->ptr;
-
-            delete inicio;
-
-            inicio = tempInicio;
-
+            fila *temp;
+            temp = inicio;
+            inicio = inicio->ptr;
+            delete temp;
         }
     }
 
