@@ -91,6 +91,7 @@ class Lista{
     }
 
     void verificarCiclo(){
+        
 
     }
 
