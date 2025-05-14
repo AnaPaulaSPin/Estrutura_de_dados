@@ -72,12 +72,14 @@ int main(){
     node* n2 = new node{2, nullptr};
     node* n3 = new node{3, nullptr};
     node* n4 = new node{4, nullptr};
+    node* n8 = new node{5, nullptr};
 
     // Ligando os nós em sequência
     n1->prox = n2;
     n2->prox = n3;
     n3->prox = n4;
-    n4->prox = nullptr;  // aqui criamos o ciclo: 4 → 2
+    n4->prox = n8;
+    n8->prox = nullptr;
 
     node* n5 = new node{5, nullptr};
     node* n6 = new node{6, nullptr};
