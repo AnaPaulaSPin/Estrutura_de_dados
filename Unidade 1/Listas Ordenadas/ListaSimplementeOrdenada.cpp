@@ -98,9 +98,9 @@ int main(){
 
     while(1){
         cout << "Menu de Fila:\n";
-        cout << "1 - Enfileirar\n";
-        cout << "2- Desenfileirar\n";
-        cout << "3 - Mostrar Fila\n";
+        cout << "1 - Inserir\n";
+        cout << "2- Retirar\n";
+        cout << "3 - Mostrar\n";
         cout << "4 - Encerrar\n";
         cout << "Escolha: ";
         cin >> r;
