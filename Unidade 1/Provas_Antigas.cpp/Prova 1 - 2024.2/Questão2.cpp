@@ -1,9 +1,16 @@
+// Questão 2:
+// Escreva uma função que receba o ponteiro de início para uma lista duplamente encadeada de números 
+// inteiros. A função informará se a lista é ou não simétrica.
+/// Considere uma lista simétrica aquela em que a sequência de números é idêntica em ambos 
+// os sentidos: de início ao fim e vice-versa.
+
+
 #include <iostream>
 using namespace std;
 
 struct node{
     int numero;
-    struct node *prox;
+    struct node *prox, *antr;
 };
 
 class Lista{
@@ -12,8 +19,9 @@ class Lista{
 
     public:
     Lista(){
-        inicio = nullptr;
+        inicio = nullptr; antr = nullptr;
     }
+
 
     void InserirElemento(int n){
         node *novo;
@@ -41,9 +49,9 @@ class Lista{
         }
     }
 
-    void mostrar(node *ptr){
-        node *atual = ptr;
-        if(ptr == nullptr){
+    void mostrar(){
+        node *atual = inicio;
+        if(inicio == nullptr){
             cout << " Lista vazia, insira numeros!\n";
         } else{
             while(atual != nullptr){
@@ -55,40 +63,15 @@ class Lista{
         }
     }
 
-    node *OrdenarLista(){
-        node *proximo, *antr, *aux, *atual = inicio, *ordenada = nullptr;
+    void ModificarLista(){
+        node *atual = inicio, *aux= fim, *proximo, *antr, *temp;
 
         while (atual != nullptr){
-            proximo = atual->prox;
+            while(aux =! nullptr){
 
-            //Ordenar:
-            if(ordenada == nullptr){
-             ordenada = atual;
-             atual->prox = nullptr;
-            } else{
-              aux = ordenada;
-              while(aux != nullptr && atual->numero > aux->numero){
-                antr = aux;
-                aux = aux->prox;
-               }
-             if(aux == ordenada){
-                atual->prox = ordenada;
-                ordenada = atual;
+            }
+       }
 
-             } else if(aux == nullptr){
-                antr->prox = atual;
-                atual->prox = nullptr;
-             } else{
-                antr->prox = atual;
-                atual->prox = aux;
-             }
-
-         }
-
-         atual = proximo;
-        }
-
-        return ordenada;
     }
 
     void mostrar(){
@@ -110,20 +93,22 @@ class Lista{
 
 int main(){
     Lista f1;
-    f1.InserirElemento(4);
-    f1.InserirElemento(3);
+
     f1.InserirElemento(7);
-    f1.InserirElemento(1);
-    f1.InserirElemento(6);
     f1.InserirElemento(2);
+    f1.InserirElemento(1);
+    f1.InserirElemento(3);
+    f1.InserirElemento(9);
+    f1.InserirElemento(1);
+    f1.InserirElemento(4);
 
     cout << "Lista original: \n";
     f1.mostrar();
 
-    node *par = f1.OrdenarLista();
+    node *inicio = f1.ModificarLista(1,2);
     
-    cout << "ListaOrdenada: \n";
-    f1.mostrar(par);
+    cout << "Lista modificada: : \n";
+    f1.mostrar(inicio);
 
 
     return 0;

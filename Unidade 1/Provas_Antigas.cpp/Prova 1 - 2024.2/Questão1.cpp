@@ -1,3 +1,8 @@
+// Questão 1
+// Escreva uma função que receba o ponteiro de início de uma lista encadeada e dois inteiros M e N.
+// A tarefa é percorrer a lista vinculada de forma que você pule M nós, exclua os próximos N nós e 
+// continue o mesmo até o final da lista. Considere que o valor de M não pode ser 0.
+
 #include <iostream>
 using namespace std;
 
