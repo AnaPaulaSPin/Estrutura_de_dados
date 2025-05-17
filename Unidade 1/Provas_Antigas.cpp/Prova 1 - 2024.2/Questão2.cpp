@@ -19,33 +19,35 @@ class Lista{
 
     public:
     Lista(){
-        inicio = nullptr; antr = nullptr;
+        inicio = nullptr;
     }
 
 
     void InserirElemento(int n){
-        node *novo;
-        novo = new node;
+        node *novo, *atual;
+        novo = new node();
         if(novo == nullptr){
-            cout <<"Nao foi possivel alocar memoria\n";
             return;
-        } 
+        }
         novo->numero = n;
+        
         if(inicio == nullptr){
+            novo ->antr = nullptr;
+            novo ->prox = nullptr;
             inicio = novo;
+            return;
+        }
+        
+        atual = inicio;
+        
+        while(atual->prox != nullptr){
+            atual = atual->prox;
+        }
+        //caso do ultimo elemento
+        if(atual ->prox == nullptr){
+            atual->prox = novo;
+            novo->antr = atual;
             novo->prox = nullptr;
-
-        } else{
-            node *atual = inicio, *ant = inicio;
-
-            while(atual != nullptr){
-                ant = atual;
-                atual = atual->prox;
-
-            }
-                ant->prox = novo;
-                novo->prox = nullptr;
-            
         }
     }
 
@@ -63,29 +65,26 @@ class Lista{
         }
     }
 
-    void ModificarLista(){
-        node *atual = inicio, *aux= fim, *proximo, *antr, *temp;
+    bool ModificarLista(){
+        node *atual = inicio, *aux = inicio;
+
+        //encontrar o fim e atribuir:
+        while(aux ->prox != nullptr){
+            aux = aux->prox;
+        }
 
         while (atual != nullptr){
-            while(aux =! nullptr){
-
+            if(aux->numero != atual->numero){
+                cout << " A lista nao e simetrica!";
+                return false;
             }
+
+            atual = atual->prox;
+            aux = aux->antr;
        }
+       cout << "Lista simetrica!";
+       return true;
 
-    }
-
-    void mostrar(){
-        node *atual = inicio;
-        if(inicio == nullptr){
-            cout << " Lista vazia, insira numeros!\n";
-        } else{
-            while(atual != nullptr){
-                cout << atual->numero << " ";
-                atual = atual->prox;
-
-            }
-            cout <<" \n";
-        }
     }
 
 
@@ -93,22 +92,15 @@ class Lista{
 
 int main(){
     Lista f1;
-
-    f1.InserirElemento(7);
+    f1.InserirElemento(4);
     f1.InserirElemento(2);
-    f1.InserirElemento(1);
-    f1.InserirElemento(3);
-    f1.InserirElemento(9);
-    f1.InserirElemento(1);
     f1.InserirElemento(4);
 
-    cout << "Lista original: \n";
-    f1.mostrar();
-
-    node *inicio = f1.ModificarLista(1,2);
+    f1.ModificarLista();
+    cout << "\n";
     
-    cout << "Lista modificada: : \n";
-    f1.mostrar(inicio);
+    cout << "\nLista: ";
+    f1.mostrar();
 
 
     return 0;
