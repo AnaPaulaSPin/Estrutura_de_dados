@@ -70,11 +70,18 @@ public:
         {
             cout << "Lista sem elementos para retirar!\n";
             return;
-            // Caso o elemento que vamos retirar esteja no inicio da lista:
+            
         }
-        else
-        {
+        else {
             temp = atual;
+            if (atual->ant == fim && atual->prox == inicio)
+            {
+                inicio = nullptr; fim = nullptr;
+                delete temp;
+
+                // Caso o elemento que vamos retirar esteja no "fim" da lista:
+            }
+            // Caso o elemento que vamos retirar esteja no inicio da lista:
             if (atual->ant == fim)
             {
                 atual->prox->ant = fim;
