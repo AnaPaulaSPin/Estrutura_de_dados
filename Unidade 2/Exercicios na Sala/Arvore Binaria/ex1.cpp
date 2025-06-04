@@ -15,7 +15,7 @@ class Arvore{
         raiz = nullptr;
     }
 
-    Arvore:: void inserir(Node2 *raiz, int n){
+    Node2* inserir(Node2 *raiz, int n){
        if(raiz == nullptr){
            raiz = new Node2;
            if(raiz == nullptr){ exit(1);}
@@ -36,6 +36,22 @@ class Arvore{
     void mostrar(){
         
        }
+    bool verificarExtritamenteBinaria(Node2 *raiz){
+        if(raiz == nullptr){
+            return true; // significa que a arvore esta vazia
+        }
+        if(raiz->dir == nullptr && raiz->esq == nullptr){
+            return true; // significa que nao tem filhos
+            
+        } else{
+            if(raiz->dir != nullptr && raiz->esq != nullptr){
+               return verificarExtritamenteBinaria(raiz->dir) && verificarExtritamenteBinaria(raiz->esq); // verifica as duas subarvores para verificar se sao extritamente binarias.
+                
+            } else {
+                return false; // significa que tem um filho apenas
+            }
+        }        
+    }
 
        
 };
@@ -43,7 +59,7 @@ class Arvore{
 int main()
 {
     int r; 
-    ListaDupla f1;
+    Arvore f1;
 
     f1.inserir(1);
     f1.inserir(2);
