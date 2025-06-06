@@ -63,8 +63,13 @@ int main()
    raiz = f1.inserir(raiz, 50);
    raiz = f1.inserir(raiz, 30);
    raiz = f1.inserir(raiz, 20);
-   raiz = f1.inserir(raiz, 40);
    raiz = f1.inserir(raiz, 70);
+
+   if(f1.verificar(raiz)){
+     cout << " Ela e extritamente binaria";
+   } else{
+    cout << "Ela nao e extritamente binaria";
+   }
    
     return 0;
 }

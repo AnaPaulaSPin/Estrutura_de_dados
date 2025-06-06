@@ -24,9 +24,9 @@ class Arvore{
            return raiz;
 
        } else{
-         if(n > raiz->info){
+         if(n < raiz->info){
             raiz->esq = inserir(raiz->esq, n);
-         } else if( n < raiz->info){
+         } else if( n > raiz->info){
             raiz->dir = inserir(raiz->dir, n);
          } else{
             cout << "Numero repetido";
