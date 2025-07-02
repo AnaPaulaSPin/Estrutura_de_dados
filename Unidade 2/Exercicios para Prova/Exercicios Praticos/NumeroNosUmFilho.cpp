@@ -35,7 +35,25 @@ class Arvore{
          return raiz;
        } 
     }
+    
+    int NumeroNoUmFilho(Node2 *raiz){
+        if(raiz == nullptr){
+            return 0;
+        }
+        if(raiz->esq == nullptr && raiz->dir == nullptr){
+            return 0;
+        }
 
+        if(raiz->esq != nullptr && raiz->dir != nullptr){
+           return NumeroNoUmFilho(raiz->dir) + NumeroNoUmFilho(raiz->esq);
+        }
+        if(raiz->esq == nullptr){
+            return 1 + NumeroNoUmFilho(raiz->dir);
+        } 
+        if(raiz->dir == nullptr){
+            return 1 + NumeroNoUmFilho(raiz->esq);
+        }   
+    }
        
 };
 
@@ -49,7 +67,8 @@ int main()
    raiz = f1.inserir(raiz, 5);
    raiz = f1.inserir(raiz, 30);
    raiz = f1.inserir(raiz, 55);
-
+   raiz = f1.inserir(raiz, 51);
+   cout << "Numero de Nos com 1 filho: " << f1.NumeroNoUmFilho(raiz);
    
 
     return 0;
