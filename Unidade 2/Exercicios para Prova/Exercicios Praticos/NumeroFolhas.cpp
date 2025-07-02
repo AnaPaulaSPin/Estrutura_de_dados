@@ -35,7 +35,18 @@ class Arvore{
          return raiz;
        } 
     }
-
+    
+    int NumeroFolhas(Node2 *raiz){
+        if(raiz == nullptr){
+            return 0;
+        }
+        if(raiz->dir == nullptr && raiz->esq == nullptr){
+            return 1;
+        }
+        
+        return NumeroFolhas(raiz->dir) + NumeroFolhas(raiz->esq);
+        
+    }
        
 };
 
@@ -49,7 +60,7 @@ int main()
    raiz = f1.inserir(raiz, 5);
    raiz = f1.inserir(raiz, 30);
    raiz = f1.inserir(raiz, 55);
-
+   cout << "Numero de folhas: " << f1.NumeroFolhas(raiz);
    
 
     return 0;
