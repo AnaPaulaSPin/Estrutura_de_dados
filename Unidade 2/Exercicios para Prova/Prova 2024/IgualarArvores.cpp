@@ -50,6 +50,59 @@ class Arvore{
 
         return ContarFolhas(raiz->esq) + ContarFolhas(raiz->dir);
     }
+
+    Node2* Remover(Node2 *raiz){
+       if(raiz==nullptr){
+        return nullptr;
+       }
+       if(raiz->esq == nullptr && raiz->dir == nullptr){
+        delete raiz;
+        return nullptr;
+       }
+
+       // se tiver subárvore esquerda, tenta remover lá primeiro
+       if(raiz->esq != nullptr){
+        raiz->esq = Remover(raiz->esq);
+      }
+       // senão tenta na direita
+      else if(raiz->dir != nullptr){
+        raiz->dir = Remover(raiz->dir);
+      }
+
+      return raiz;
+    }
+
+    void igualarRaiz(Node2 *raiz){
+        if(raiz == nullptr){
+            return;
+        }
+
+        int esq = ContarFolhas(raiz->esq);
+        int dir = ContarFolhas(raiz->dir);
+
+        if(esq > dir){
+            while(esq != dir){
+                raiz->esq = Remover(raiz->esq);
+                esq = ContarFolhas(raiz->esq);
+            }
+        } else if(dir > esq){
+            while(dir != esq){
+                raiz->dir = Remover(raiz->dir);
+                dir = ContarFolhas(raiz->dir);
+            }
+        }
+
+    }
+
+    void imprimirEmOrdem(Node2 *raiz){
+        if(raiz == nullptr){
+            return;
+        }
+
+        imprimirEmOrdem(raiz->esq);
+        cout << raiz->info << " ";
+        imprimirEmOrdem(raiz->dir);
+    }
     
 
        
@@ -67,7 +120,10 @@ int main()
    raiz = f1.inserir(raiz, 55);
    raiz = f1.inserir(raiz, 51);
 
-   cout << "Numero de Folhas da arvore e: " << f1.ContarFolhas(raiz);
+   cout << "Numero de Folhas da arvore e: " << f1.ContarFolhas(raiz) << "\n";
+   f1.igualarRaiz(raiz);
+
+   f1.imprimirEmOrdem(raiz);
    
 
     return 0;
