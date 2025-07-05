@@ -51,6 +51,23 @@ class Arvore{
 
         return ContarFolhas(raiz->esq) + ContarFolhas(raiz->dir);
     }
+
+    void MaiorFolhaSubArvore(Node2 *raiz){
+        if(raiz == nullptr){
+            return;
+        }
+
+        int esq = ContarFolhas(raiz->esq);
+        int dir = ContarFolhas(raiz->dir);
+
+        if(esq > dir){
+            cout << "raiz esquerda possui maiores folhas, com: " << esq <<" Folhas";
+        } else if(dir > esq){
+            cout << "raiz direita possui maiores folhas, com: " << dir << " Folhas";
+        } else{
+            cout << " As subArvores tem tamanhos de folhas iguais!";
+        }
+    }
     
 
        
@@ -67,9 +84,10 @@ int main()
    raiz = f1.inserir(raiz, 30);
    raiz = f1.inserir(raiz, 55);
    raiz = f1.inserir(raiz, 51);
+   raiz = f1.inserir(raiz, 56);
 
-   cout << "Numero de Folhas da arvore e: " << f1.ContarFolhas(raiz);
-   
+   cout << "Numero de Folhas da arvore e: " << f1.ContarFolhas(raiz) << "\n";
+   f1.MaiorFolhaSubArvore(raiz);
 
     return 0;
 }
